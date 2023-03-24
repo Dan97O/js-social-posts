@@ -97,8 +97,15 @@ function postElement(post) {
     return divElement;
 }
 
+//data in formato americano
+function americanDate(dateStr) {
+    let date = new Date(dateStr);
+    return date.toLocaleDateString("en-US");
+}
+
 //creo il markup
 function createMarkup(post) {
+    let dateUsa = americanDate(post.created, "en-US");
     const markup = `
     <div class="post__header">
         <div class="post-meta">
@@ -107,7 +114,7 @@ function createMarkup(post) {
             </div>
             <div class="post-meta__data">
                 <div class="post-meta__author">${post.author.name}</div>
-                <div class="post-meta__time">${post.created}</div>
+                <div class="post-meta__time">${dateUsa}</div>
             </div>
         </div>
     </div>
